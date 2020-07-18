@@ -20,6 +20,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
     'fechaDeNacimiento',
     'ver'
   ];
+  model;
   dataSource: MatTableDataSource<HistoriaClinica>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -54,10 +55,12 @@ export class InicioComponent implements OnInit, AfterViewInit {
 
   crear(content) {
     this.modalService.open(content)
+    Feather.replace();
   }
 
   ver(content){
     this.modalService.open(content)
+    Feather.replace();
   }
 
 }
