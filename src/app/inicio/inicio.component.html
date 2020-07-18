@@ -1,0 +1,104 @@
+<section>
+    <form>
+        <div class="row m-2">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="content-header">
+                    Lista de historias clínicas
+                    <button class="btn btn-sm btn-primary" (click)="crear(crearModal)">
+                        <i data-feather="plus" class="show-pointer"></i>
+                        Crear
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="card-block">
+
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar...">
+                    </mat-form-field>
+
+                    <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="dataSource" matSort>
+
+                            <ng-container matColumnDef="dni">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> DNI </th>
+                                <td mat-cell *matCellDef="let row"> {{row.dni}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="apellido">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+                                <td mat-cell *matCellDef="let row"> {{row.apellido}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="nombre">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                                <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="sexo">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Sexo </th>
+                                <td mat-cell *matCellDef="let row"> {{row.sexo}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="fechaDeNacimiento">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de nacimiento </th>
+                                <td mat-cell *matCellDef="let row"> {{row.fechaDeNacimiento}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="ver">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                                <td mat-cell *matCellDef="let row">
+                                    <button class="btn btn-sm btn-primary ml-5" (click)="ver(verEditarModal)">
+                                        <i data-feather="eye" class="show-pointer"></i>
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="columnasMostradas"></tr>
+                            <tr mat-row *matRowDef="let row; columns: columnasMostradas;">
+                            </tr>
+                        </table>
+
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+<ng-template #crearModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Crear historia clínica</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        This is example from ItSolutionStuff.com
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Ok</button>
+    </div>
+</ng-template>
+
+<ng-template #verEditarModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Historia clínica</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        This is example from ItSolutionStuff.com
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Ok</button>
+    </div>
+</ng-template>
