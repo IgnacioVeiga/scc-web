@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatRadioModule } from '@angular/material/radio';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 @NgModule({
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    MatRadioModule,
     MatIconModule,
     MatTableModule,
     MatInputModule,
