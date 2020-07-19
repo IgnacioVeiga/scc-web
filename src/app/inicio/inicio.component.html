@@ -204,28 +204,31 @@
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Apellido</mat-label>
                             <input matInput name="apellido" [(ngModel)]="modelo.apellido">
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Apellido:</b> {{modelo.apellido}}</span>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Nombre</mat-label>
                             <input matInput name="nombre" [(ngModel)]="modelo.nombre">
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Nombre:</b> {{modelo.nombre}}</span>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
-                        <mat-radio-group aria-label="Sexo">
+                        <mat-radio-group aria-label="Sexo" *ngIf="editar">
                             <mat-radio-button value="1" [checked]="true">Femenino</mat-radio-button>
                             <mat-radio-button class="ml-2" value="2">Masculino</mat-radio-button>
                         </mat-radio-group>
+                        <span *ngIf="!editar"><b>Sexo:</b> {{modelo.sexo}}</span>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
-                        <div class="input-group">
-                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model"
+                        <div class="input-group" *ngIf="editar">
+                            <input class="form-control" placeholder="Fecha de nacimiento" name="dp" [(ngModel)]="model"
                                 ngbDatepicker #d="ngbDatepicker">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" (click)="d.toggle()" type="button">
@@ -233,6 +236,7 @@
                                 </button>
                             </div>
                         </div>
+                        <span *ngIf="!editar"><b>Fecha de nacimiento:</b> {{modelo.fechaDeNacimiento}}</span>
                     </div>
 
                     <div class="col-12">
@@ -240,52 +244,60 @@
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Quirurgicos</mat-label>
                             <textarea matInput placeholder="Ninguno" name="quirurgicos" [(ngModel)]="modelo.quirurgicos"></textarea>
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Quirurgicos:</b> {{modelo.quirurgicos}}</span>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Transfusionales</mat-label>
                             <textarea matInput placeholder="Ninguno" name="transfusionales" [(ngModel)]="modelo.transfusionales"></textarea>
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Transfusionales:</b> {{modelo.transfusionales}}</span>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Alergias</mat-label>
                             <textarea matInput placeholder="Ninguno" name="alergias" [(ngModel)]="modelo.alergias"></textarea>
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Alergias:</b> {{modelo.alergias}}</span>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Hospitalizaciones previas</mat-label>
                             <textarea matInput placeholder="Ninguno" name="hospitalizacionesPrevias" [(ngModel)]="modelo.hospitalizacionesPrevias"></textarea>
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Hospitalizaciones previas:</b> {{modelo.hospitalizacionesPrevias}}</span>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Fisiologicos</mat-label>
                             <textarea matInput placeholder="Ninguno" name="fisiologicos" [(ngModel)]="modelo.fisiologicos"></textarea>
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Fisiologicos:</b> {{modelo.fisiologicos}}</span>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Habitos toxicos</mat-label>
                             <textarea matInput placeholder="Ej: alcohol, tabaco, etc" name="habitosToxicos" [(ngModel)]="modelo.habitosToxicos"></textarea>
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Habitos toxicos:</b> {{modelo.habitosToxicos}}</span>
                     </div>
                     <div class="col-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Otros</mat-label>
                             <textarea matInput placeholder="Ninguno" name="otros" [(ngModel)]="modelo.otros"></textarea>
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Otros:</b> {{modelo.otros}}</span>
                     </div>
                     <div class="col-12">
-                        <mat-form-field>
+                        <mat-form-field *ngIf="editar">
                             <mat-label>Padecimiento actual</mat-label>
                             <textarea matInput placeholder="1 principio, 2 evolución, 3 estado actual" name="padecimientoActual" [(ngModel)]="modelo.padecimientoActual"></textarea>
                         </mat-form-field>
+                        <span *ngIf="!editar"><b>Padecimiento actual:</b> {{modelo.padecimientoActual}}</span>
                     </div>
                 </div>
 

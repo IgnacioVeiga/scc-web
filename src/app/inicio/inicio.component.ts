@@ -43,6 +43,19 @@ export class InicioComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
     this.paginator._intl.itemsPerPageLabel = 'Cantidad de filas';
     Feather.replace();
+    this.modelo.dni = '12.345.678';
+    this.modelo.apellido = 'NN';
+    this.modelo.nombre = 'NN';
+    this.modelo.sexo = 'F';
+    this.modelo.fechaDeNacimiento = '00/00/0000';
+    this.modelo.quirurgicos = 'Ninguno';
+    this.modelo.transfusionales = 'Ninguno';
+    this.modelo.alergias = 'Ninguna';
+    this.modelo.fisiologicos = 'Ninguno';
+    this.modelo.hospitalizacionesPrevias = 'Ninguna';
+    this.modelo.habitosToxicos = 'Fumar';
+    this.modelo.otros = 'Lorem ipsum dolor sit amet, consectetur adipiscing.';
+    this.modelo.padecimientoActual = 'Lorem ipsum dolor sit amet, consectetur adipiscing.';
   }
 
   ngAfterViewInit() {
