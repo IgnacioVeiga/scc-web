@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import * as Feather from 'feather-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { HistoriaClinicaDTO } from '../models/objects';
 
 @Component({
   selector: 'app-inicio',
@@ -21,6 +22,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
     'ver'
   ];
   model;
+  modelo: HistoriaClinicaDTO = new HistoriaClinicaDTO();
+  editar = false;
   dataSource: MatTableDataSource<HistoriaClinica>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -58,6 +61,11 @@ export class InicioComponent implements OnInit, AfterViewInit {
     this.modalService.open(content, {
       size: 'lg'
     })
+    Feather.replace();
+  }
+
+  modoEditar() {
+    this.editar = !this.editar;
     Feather.replace();
   }
 
