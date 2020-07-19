@@ -4,7 +4,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="content-header">
                     Lista de historias clínicas
-                    <button class="btn btn-sm btn-primary" (click)="crear(crearModal)">
+                    <button class="btn btn-sm btn-primary" (click)="abrirModal(crearModal)">
                         <i data-feather="plus" class="show-pointer"></i>
                         Crear
                     </button>
@@ -53,7 +53,7 @@
                             <ng-container matColumnDef="ver">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                                 <td mat-cell *matCellDef="let row">
-                                    <button class="btn btn-sm btn-primary ml-5" (click)="ver(verEditarModal)">
+                                    <button class="btn btn-sm btn-primary ml-5" (click)="abrirModal(verEditarModal)">
                                         <i data-feather="eye" class="show-pointer"></i>
                                     </button>
                                 </td>
@@ -75,34 +75,7 @@
 
 <ng-template #crearModal let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Crear historia clínica</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form class="form-inline">
-            <div class="form-group">
-                <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
-                        #d="ngbDatepicker">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" (click)="d.toggle()" type="button">
-                            <i data-feather="calendar"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Ok</button>
-    </div>
-</ng-template>
-
-<ng-template #verEditarModal let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Historia clínica</h4>
+        <h2 class="modal-title" id="modal-basic-title">Crear historia clínica</h2>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
             <span aria-hidden="true">×</span>
         </button>
@@ -110,34 +83,218 @@
     <div class="modal-body">
         <form class="form">
             <div class="form-group">
-                <mat-form-field>
-                    <mat-label>Apellido</mat-label>
-                    <input matInput placeholder="" value="NN">
-                </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Nombre</mat-label>
-                    <input matInput placeholder="" value="NN">
-                </mat-form-field>
+                <div class="row">
 
-                <mat-radio-group aria-label="Sexo">
-                    <mat-radio-button value="1">Femenino</mat-radio-button>
-                    <mat-radio-button class="ml-2" value="2">Masculino</mat-radio-button>
-                </mat-radio-group>
-            </div>
+                    <div class="col-12">
+                        <h4>Datos personales</h4>
+                    </div>
 
-            <div class="form-group">
-                <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
-                        #d="ngbDatepicker">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Apellido</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Nombre</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                        <mat-radio-group aria-label="Sexo">
+                            <mat-radio-button value="1">Femenino</mat-radio-button>
+                            <mat-radio-button class="ml-2" value="2">Masculino</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model"
+                                ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" (click)="d.toggle()" type="button">
+                                    <i data-feather="calendar"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <h4>Antecedentes personales</h4>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Quirurgicos</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Transfusionales</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Alergias</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Hospitalizaciones previas</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Fisiologicos</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Habitos toxicos</mat-label>
+                            <textarea matInput placeholder="Ej: alcohol, tabaco, etc"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field>
+                            <mat-label>Otros</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field>
+                            <mat-label>Padecimiento actual</mat-label>
+                            <textarea matInput placeholder="1 principio, 2 evolución, 3 estado actual"></textarea>
+                        </mat-form-field>
                     </div>
                 </div>
+
             </div>
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Ok</button>
+        <button type="button" class="btn btn-outline-dark mr-2" (click)="modal.close()">Cerrar</button>
+        <button type="button" class="btn btn-secondary mr-2" (click)="modal.close()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close()">Guardar</button>
+    </div>
+</ng-template>
+
+<ng-template #verEditarModal let-modal>
+    <div class="modal-header">
+        <h2 class="modal-title" id="modal-basic-title">Historia clínica</h2>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="form">
+            <div class="form-group">
+
+                <div class="row">
+
+                    <div class="col-12">
+                        <h4>Datos personales</h4>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Apellido</mat-label>
+                            <input matInput value="NN">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Nombre</mat-label>
+                            <input matInput value="NN">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                        <mat-radio-group aria-label="Sexo">
+                            <mat-radio-button value="1" [checked]="true">Femenino</mat-radio-button>
+                            <mat-radio-button class="ml-2" value="2">Masculino</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model"
+                                ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" (click)="d.toggle()" type="button">
+                                    <i data-feather="calendar"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <h4>Antecedentes personales</h4>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Quirurgicos</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Transfusionales</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Alergias</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Hospitalizaciones previas</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Fisiologicos</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Habitos toxicos</mat-label>
+                            <textarea matInput placeholder="Ej: alcohol, tabaco, etc"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field>
+                            <mat-label>Otros</mat-label>
+                            <textarea matInput placeholder="Ninguno"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field>
+                            <mat-label>Padecimiento actual</mat-label>
+                            <textarea matInput placeholder="1 principio, 2 evolución, 3 estado actual"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark mr-2" (click)="modal.close()">Cerrar</button>
+        <button type="button" class="btn btn-secondary mr-2" (click)="modal.close()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close()">Guardar</button>
     </div>
 </ng-template>

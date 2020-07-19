@@ -54,13 +54,10 @@ export class InicioComponent implements OnInit, AfterViewInit {
     }
   }
 
-  crear(content) {
-    this.modalService.open(content)
-    Feather.replace();
-  }
-
-  ver(content){
-    this.modalService.open(content)
+  abrirModal(content) {
+    this.modalService.open(content, {
+      size: 'lg'
+    })
     Feather.replace();
   }
 
