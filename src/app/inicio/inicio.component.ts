@@ -39,6 +39,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.paginator._intl.itemsPerPageLabel = 'Cantidad de filas';
+    Feather.replace();
   }
 
   ngAfterViewInit() {
@@ -70,8 +71,8 @@ export class InicioComponent implements OnInit, AfterViewInit {
 function crearHistoriaClinica(): HistoriaClinica {
   return {
     dni: generarDNI(),
-    apellido: '',
-    nombre: '',
+    apellido: 'NN',
+    nombre: 'NN',
     fechaDeNacimiento: '00/00/0000',
     sexo: asignarSexo()
   };

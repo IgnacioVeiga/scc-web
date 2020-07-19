@@ -83,17 +83,17 @@
     <div class="modal-body">
         <form class="form-inline">
             <div class="form-group">
-              <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd"
-                       name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                <div class="input-group-append">
-                  <button class="btn btn-secondary" (click)="d.toggle()" type="button">
-                      <i data-feather="calendar"></i>
-                  </button>
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                        #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" (click)="d.toggle()" type="button">
+                            <i data-feather="calendar"></i>
+                        </button>
+                    </div>
                 </div>
-              </div>
             </div>
-          </form>
+        </form>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Ok</button>
@@ -108,17 +108,34 @@
         </button>
     </div>
     <div class="modal-body">
-        <form class="form-inline">
+        <form class="form">
             <div class="form-group">
-              <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd"
-                       name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-                </div>
-              </div>
+                <mat-form-field>
+                    <mat-label>Apellido</mat-label>
+                    <input matInput placeholder="" value="NN">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="" value="NN">
+                </mat-form-field>
+
+                <mat-radio-group aria-label="Sexo">
+                    <mat-radio-button value="1">Femenino</mat-radio-button>
+                    <mat-radio-button value="2">Masculino</mat-radio-button>
+                </mat-radio-group>
             </div>
-          </form>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                        #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Ok</button>
