@@ -5,7 +5,9 @@
                 <div class="content-header">
                     Lista de historias clínicas
                     <button class="btn btn-sm btn-primary" (click)="abrirModal(crearModal)">
-                        <i data-feather="plus" class="show-pointer"></i>
+                        <svg class="feather show-pointer">
+                            <use xlink:href="/assets/icons/feather-sprite.svg#plus"/>
+                          </svg>
                         Crear
                     </button>
                 </div>
@@ -54,7 +56,9 @@
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                                 <td mat-cell *matCellDef="let row">
                                     <button class="btn btn-sm btn-primary ml-5" (click)="abrirModal(verEditarModal)">
-                                        <i data-feather="eye" class="show-pointer"></i>
+                                        <svg class="feather show-pointer">
+                                            <use xlink:href="/assets/icons/feather-sprite.svg#eye"/>
+                                          </svg>
                                     </button>
                                 </td>
                             </ng-container>
@@ -112,11 +116,13 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                         <div class="input-group">
-                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model"
+                            <input class="form-control" placeholder="Fecha de nacimiento" name="dp" [(ngModel)]="model"
                                 ngbDatepicker #d="ngbDatepicker">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" (click)="d.toggle()" type="button">
-                                    <i data-feather="calendar"></i>
+                                    <svg class="feather show-pointer">
+                                        <use xlink:href="/assets/icons/feather-sprite.svg#calendar"/>
+                                      </svg>
                                 </button>
                             </div>
                         </div>
@@ -180,9 +186,8 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark mr-2" (click)="modal.close()">Cerrar</button>
-        <button type="button" class="btn btn-secondary mr-2" (click)="modal.close()">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="modal.close()">Guardar</button>
+        <button type="button" class="btn btn-secondary mr-2" (click)="cerrarModal()">Cancelar y cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="cerrarModal()">Guardar</button>
     </div>
 </ng-template>
 
@@ -228,11 +233,13 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                         <div class="input-group" *ngIf="editar">
-                            <input class="form-control" placeholder="Fecha de nacimiento" name="dp" [(ngModel)]="model"
+                            <input class="form-control" placeholder="00/00/0000" name="dp" [(ngModel)]="model"
                                 ngbDatepicker #d="ngbDatepicker">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" (click)="d.toggle()" type="button">
-                                    <i data-feather="calendar"></i>
+                                    <svg class="feather show-pointer">
+                                        <use xlink:href="/assets/icons/feather-sprite.svg#calendar"/>
+                                      </svg>
                                 </button>
                             </div>
                         </div>
@@ -305,9 +312,9 @@
         </form>
     </div>
     <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark mr-2" (click)="cerrarModal()">Cerrar</button>
         <button type="button" class="btn btn-outline-primary mr-2" (click)="modoEditar()" *ngIf="!editar">Editar</button>
-        <button type="button" class="btn btn-outline-dark mr-2" (click)="modal.close()">Cerrar</button>
         <button type="button" class="btn btn-secondary mr-2" (click)="modoEditar()" *ngIf="editar">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="modal.close()">Guardar</button>
+        <button type="button" class="btn btn-primary" (click)="cerrarModal()">Guardar</button>
     </div>
 </ng-template>

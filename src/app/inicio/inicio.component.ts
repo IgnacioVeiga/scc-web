@@ -3,7 +3,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { HistoriaClinica } from '../models/interfaces';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import * as Feather from 'feather-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HistoriaClinicaDTO } from '../models/objects';
 
@@ -12,7 +11,7 @@ import { HistoriaClinicaDTO } from '../models/objects';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
 })
-export class InicioComponent implements OnInit, AfterViewInit {
+export class InicioComponent implements OnInit {
   columnasMostradas: string[] = [
     'dni',
     'apellido',
@@ -42,7 +41,6 @@ export class InicioComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.paginator._intl.itemsPerPageLabel = 'Cantidad de filas';
-    Feather.replace();
     this.modelo.dni = '12.345.678';
     this.modelo.apellido = 'NN';
     this.modelo.nombre = 'NN';
@@ -58,10 +56,6 @@ export class InicioComponent implements OnInit, AfterViewInit {
     this.modelo.padecimientoActual = 'Lorem ipsum dolor sit amet, consectetur adipiscing.';
   }
 
-  ngAfterViewInit() {
-    Feather.replace();
-  }
-
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -73,13 +67,17 @@ export class InicioComponent implements OnInit, AfterViewInit {
   abrirModal(content) {
     this.modalService.open(content, {
       size: 'lg'
-    })
-    Feather.replace();
+    });
   }
 
   modoEditar() {
     this.editar = !this.editar;
-    Feather.replace();
+    // Feather.replace();
+  }
+
+  cerrarModal() {
+    this.modalService.dismissAll();
+    this.editar = false;
   }
 
 }
