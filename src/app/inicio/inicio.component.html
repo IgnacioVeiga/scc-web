@@ -4,7 +4,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="content-header">
                     Lista de historias clínicas
-                    <button class="btn btn-sm btn-primary" (click)="abrirModal(crearModal)">
+                    <button class="btn btn-sm btn-primary" (click)="abrirModal(crearModal, '', '')">
                         <svg class="feather show-pointer">
                             <use xlink:href="/assets/icons/feather-sprite.svg#plus"/>
                           </svg>
@@ -55,7 +55,7 @@
                             <ng-container matColumnDef="ver">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                                 <td mat-cell *matCellDef="let row">
-                                    <button class="btn btn-sm btn-primary ml-5" (click)="abrirModal(verEditarModal)">
+                                    <button class="btn btn-sm btn-primary ml-5" (click)="abrirModal(verEditarModal, row.dni, row.sexo)">
                                         <svg class="feather show-pointer">
                                             <use xlink:href="/assets/icons/feather-sprite.svg#eye"/>
                                           </svg>
@@ -80,7 +80,7 @@
 <ng-template #crearModal let-modal>
     <div class="modal-header">
         <h2 class="modal-title" id="modal-basic-title">Crear historia clínica</h2>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <button type="button" class="close" aria-label="Close" (click)="cerrarModal()">
             <span aria-hidden="true">×</span>
         </button>
     </div>
@@ -107,14 +107,21 @@
                         </mat-form-field>
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                        <mat-form-field>
+                            <mat-label>DNI</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-2">
                         <mat-radio-group aria-label="Sexo">
                             <mat-radio-button value="1">Femenino</mat-radio-button>
                             <mat-radio-button class="ml-2" value="2">Masculino</mat-radio-button>
                         </mat-radio-group>
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-2">
                         <div class="input-group">
                             <input class="form-control" placeholder="Fecha de nacimiento" name="dp" [(ngModel)]="model"
                                 ngbDatepicker #d="ngbDatepicker">
@@ -194,7 +201,7 @@
 <ng-template #verEditarModal let-modal>
     <div class="modal-header">
         <h2 class="modal-title" id="modal-basic-title">Historia clínica</h2>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <button type="button" class="close" aria-label="Close" (click)="cerrarModal()">
             <span aria-hidden="true">×</span>
         </button>
     </div>
@@ -205,7 +212,7 @@
                 <div class="row">
 
                     <div class="col-12">
-                        <h4>Datos personales de {{modelo.dni}}</h4>
+                        <h4>Datos personales</h4>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-12">
@@ -222,16 +229,24 @@
                         </mat-form-field>
                         <span *ngIf="!editar"><b>Nombre:</b> {{modelo.nombre}}</span>
                     </div>
+                    
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                        <mat-form-field aria-label="Sexo" *ngIf="editar">
+                            <mat-label>DNI</mat-label>
+                            <input matInput name="dni" [(ngModel)]="modelo.dni">
+                        </mat-form-field>
+                        <span *ngIf="!editar"><b>DNI:</b> {{modelo.dni}}</span>
+                    </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-2">
                         <mat-radio-group aria-label="Sexo" *ngIf="editar">
-                            <mat-radio-button value="1" [checked]="true">Femenino</mat-radio-button>
-                            <mat-radio-button class="ml-2" value="2">Masculino</mat-radio-button>
+                            <mat-radio-button value="1" [checked]="modelo.sexo == 'F'">Femenino</mat-radio-button>
+                            <mat-radio-button class="ml-2" value="2" [checked]="modelo.sexo == 'M'">Masculino</mat-radio-button>
                         </mat-radio-group>
                         <span *ngIf="!editar"><b>Sexo:</b> {{modelo.sexo}}</span>
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                    <div class="col-lg-4 col-md-4 col-sm-12 mb-2">
                         <div class="input-group" *ngIf="editar">
                             <input class="form-control" placeholder="00/00/0000" name="dp" [(ngModel)]="model"
                                 ngbDatepicker #d="ngbDatepicker">

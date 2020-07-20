@@ -64,7 +64,9 @@ export class InicioComponent implements OnInit {
     }
   }
 
-  abrirModal(content) {
+  abrirModal(content, dni, sexo) {
+    this.modelo.dni = dni;
+    this.modelo.sexo = sexo;
     this.modalService.open(content, {
       size: 'lg'
     });
